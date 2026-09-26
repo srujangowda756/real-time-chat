@@ -5,7 +5,7 @@ from sqlalchemy import engine_from_config, pool
 
 from core.config import settings
 from database.session import Base
-from model import User, Message
+from model import User, Message,User1
 
 
 # Alembic Config object

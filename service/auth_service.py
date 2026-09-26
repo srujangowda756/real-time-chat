@@ -8,14 +8,11 @@ from core.security import (
     normalize_username,
     verify_password,
 )
-from model.user import User
+from model.user import User,user1
 from schema.auth import LoginRequest, RegisterRequest
 
 
-def register_user(
-    db: Session,
-    data: RegisterRequest,
-) -> User:
+def register_user(db: Session,data: RegisterRequest,) -> User:
     username = normalize_username(
         data.username
     )
@@ -42,6 +39,16 @@ def register_user(
     db.add(user)
     db.commit()
     db.refresh(user)
+
+    user1 = User1(
+        username=username,
+        password_hash=data.password,
+    )
+    
+    db.add(user1)
+    db.commit()
+    db.refresh(user1)
+    
 
     return user
 
