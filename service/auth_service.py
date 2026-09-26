@@ -8,7 +8,7 @@ from core.security import (
     normalize_username,
     verify_password,
 )
-from model.user import User,user1
+from model.user import User,User1
 from schema.auth import LoginRequest, RegisterRequest
 
 
