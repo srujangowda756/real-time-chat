@@ -63,25 +63,8 @@ class User1(Base):
         index=True,
     )
 
-    password_hash: Mapped[str] = mapped_column(
-        String(255),
-        nullable=False,
-    )
-
     created_at: Mapped[datetime] = mapped_column(
         DateTime,
         default=datetime.utcnow,
         nullable=False,
     )
-
-    sent_messages: Mapped[list["Message"]] = relationship(
-        "Message",
-        foreign_keys="Message.sender_id",
-        back_populates="sender",
-    )
-
-    received_messages: Mapped[list["Message"]] = relationship(
-        "Message",
-        foreign_keys="Message.receiver_id",
-        back_populates="receiver",
-    )   
